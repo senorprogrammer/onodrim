@@ -5,7 +5,13 @@ module Generators
     end
 
     def random
-      Terrain::Tree.new
+      klass = [
+        Terrain::Rock,
+        Terrain::Shrub,
+        Terrain::Tree,
+      ].sample
+
+      klass.new
     end
   end
 end
