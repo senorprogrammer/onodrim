@@ -2,24 +2,34 @@ module Terrain
   class Matrix
     property grid
 
-    def initialize(width, height)
+    def initialize(rows : Int32, cols : Int32)
+      @rows = rows
+      @cols = cols
+
       @grid = [] of Array(Terrain::Type)
 
-      height.times do |h|
+      rows.times do |_|
         row = [] of Terrain::Type
 
-        (0...width).each { |w| row << Terrain::Type.new }
+        (0...cols).each { |col| row << Terrain::Type.new }
 
         @grid << row
       end
     end
 
-    def update(x, y, terrain)
-      @grid[x][y] = terrain
+    def update(col, row, terrain)
+      @grid[col][row] = terrain
     end
 
-    def at(x, y)
-      @grid[x][y]
+    def to_random_location(terrain)
+      col = Random.rand(@rows)
+      row = Random.rand(@cols)
+
+      update(col, row, terrain)
+    end
+
+    def at(col, row)
+      @grid[col][row]
     end
 
     def size
@@ -33,7 +43,7 @@ module Terrain
         row_str = ""
 
         row.each do |col|
-          row_str += col.symbol.colorize.fore(col.color).to_s
+          row_str += col.symbol.colorize.fore(col.color[:fore]).back(col.color[:back]).to_s
         end
 
         grid_str += row_str + "\n"

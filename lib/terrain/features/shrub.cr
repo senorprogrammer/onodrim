@@ -1,4 +1,4 @@
-require "./type"
+require "../type"
 
 module Terrain
   class Shrub < Type
@@ -12,7 +12,10 @@ module Terrain
     end
 
     def color
-      :green
+      @color || {
+                  back: [:black].sample,
+                  fore: [:green].sample
+                }
     end
 
   end
