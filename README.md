@@ -11,4 +11,9 @@ screenshot at the top of this article about Dwarf Fortress (http://www.seattlewe
 
 ## Execution
 
+Run this in the terminal:
+
     crystal onodrim.cr
+
+It'll draw a grid of shapes and colours. It's a world! (use your
+imagination).
