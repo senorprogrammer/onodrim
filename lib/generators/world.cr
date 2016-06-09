@@ -8,8 +8,7 @@ module Generators
 
       height.times do |w|
         width.times do |h|
-          terrain = Generators::Terrain.new.random
-          @grid.update(w, h, terrain)
+          @grid.update(w, h, Generators::Terrain.new.random)
         end
       end
     end

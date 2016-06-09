@@ -7,9 +7,7 @@ class Matrix
     height.times do |h|
       row = [] of Terrain::Type
 
-      (0...width).each do |w|
-        row << Terrain::Type.new
-      end
+      (0...width).each { |w| row << Terrain::Type.new }
 
       @grid << row
     end
