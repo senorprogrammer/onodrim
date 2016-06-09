@@ -3,10 +3,6 @@ require "../type"
 module Terrain
   class Sand < Type
 
-    def initialize
-      super
-    end
-
     def symbol
       "\u2317"
     end

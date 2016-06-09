@@ -3,10 +3,6 @@ require "../type"
 module Terrain
   class Tree < Type
 
-    def initialize
-      super
-    end
-
     def symbol
       ["\u2912", "\u2B06"].sample
     end

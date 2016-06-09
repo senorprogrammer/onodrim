@@ -9,6 +9,7 @@ module Generators
         Terrain::Rock,
         Terrain::Shrub,
         Terrain::Tree,
+        Terrain::Water,
       ].sample
 
       klass.new

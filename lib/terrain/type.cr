@@ -2,9 +2,6 @@ module Terrain
   class Type
     property color
 
-    def initialize
-    end
-
     def symbol
       raise "Sub-class must implement #symbol."
     end

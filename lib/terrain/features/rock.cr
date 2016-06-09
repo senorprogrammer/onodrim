@@ -3,10 +3,6 @@ require "../type"
 module Terrain
   class Rock < Type
 
-    def initialize
-      super
-    end
-
     def symbol
       ["\u2738", "\u272A"].sample
     end
