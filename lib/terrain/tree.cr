@@ -7,5 +7,13 @@ module Terrain
       super
     end
 
+    def symbol
+      ["t", "T"].sample
+    end
+
+    def color
+      :green
+    end
+
   end
 end

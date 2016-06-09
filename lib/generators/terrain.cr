@@ -2,7 +2,6 @@ module Generators
   class Terrain
 
     def initialize
-
     end
 
     def random
