@@ -17,3 +17,5 @@ Run this in the terminal:
 
 It'll draw a grid of shapes and colours. It's a world! (use your
 imagination).
+
+![screenshot](./docs/screenshot.png)
