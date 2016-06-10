@@ -35,6 +35,9 @@ module Terrain
 
     # Use this to drop large elements onto the matric (for
     # instance, a body of water, or a forest)
+    #
+    # FIXME: Row, Col should be the center of the object, not the top-left
+
     def drop_at(row, col, terrain_body)
       terrain_body.matrix.grid.each_with_index do |terrain_row, tr_idx|
         terrain_row.each_with_index do |terrain, t_idx|

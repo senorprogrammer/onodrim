@@ -23,12 +23,15 @@ module Terrain
 
     # NOTE: This is terribly inefficient. Don't look at this. Don't look!
     #
-    # Better approach:
+    # Better approach?
     #
     # For each row:
     # - Pick an offset from the left of the current row
     # - Pick a rand num from the length of the current row
     # - Fill that many cols with Terrain. Fill the rest with Null
+    #
+    # Ok, tried that ^ approach. Not better. Faster, but worse-looking forests.
+    #
 
     private def populate(grid, terrain_sample)
       # Fill the entire aggregate area with the terrain
