@@ -6,10 +6,12 @@ module Generators
 
     def random
       klass = [
+        Terrain::House,
         Terrain::Rock,
         Terrain::Shrub,
         Terrain::Tree,
         Terrain::Water,
+        Terrain::Sand
       ].sample
 
       klass.new

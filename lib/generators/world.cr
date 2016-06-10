@@ -3,23 +3,57 @@ module Generators
     property grid
     property name
 
-    def initialize(name : String, cols = 100, rows = 100)
+    def initialize(name : String, rows = 100, cols = 100)
       @name = name
 
       # Generate the world matrix
       @grid = Terrain::Matrix.new(rows, cols)
 
-      # Populate it with the base layer
+      add_base_layer(rows, cols)
+
+      Random.rand(50).times do |rnd|
+        add_lakes(1)
+        add_forests(1)
+      end
+    end
+
+    # -------------------- Private Methods --------------------
+
+    # Populate it with the base layer
+    private def add_base_layer(rows, cols)
       rows.times do |row|
         cols.times do |col|
-          @grid.update(row, col, Terrain::Sand.new)
+          @grid.place_at(row, col, Terrain::Sand.new)
         end
       end
+    end
 
-      # Drop some features into the world
+    # Drop some features into the world
+    private def add_features
       Random.rand((@grid.size + 5)).times do |x|
         terrain = Generators::Terrain.new.random()
-        @grid.to_random_location(terrain)
+        @grid.place_randomly(terrain)
+      end
+    end
+
+    # Drop some lakes the world
+    private def add_lakes(count : Int32)
+      count.times do
+        rows = Random.rand(15)
+        cols = Random.rand(30)
+
+        lake = Terrain::Aggregate.new(Terrain::Water.new, rows, cols)
+        @grid.drop_randomly(lake)
+      end
+    end
+
+    private def add_forests(count : Int32)
+      count.times do
+        rows = Random.rand(15)
+        cols = Random.rand(30)
+
+        forest = Terrain::Aggregate.new(Terrain::Tree.new, rows, cols)
+        @grid.drop_randomly(forest)
       end
     end
   end

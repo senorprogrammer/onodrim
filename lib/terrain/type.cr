@@ -14,5 +14,9 @@ module Terrain
       raise "Sub-class must implement #color."
     end
 
+    # Returns the symbol wrapped in ANSI color codes
+    def to_s
+      symbol.colorize.fore(color[:fore]).back(color[:back]).to_s
+    end
   end
 end

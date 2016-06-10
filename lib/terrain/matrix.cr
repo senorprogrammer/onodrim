@@ -1,6 +1,7 @@
 module Terrain
   class Matrix
     property grid
+    property rows
 
     def initialize(rows : Int32, cols : Int32)
       @rows = rows
@@ -17,19 +18,45 @@ module Terrain
       end
     end
 
-    def update(col, row, terrain)
-      @grid[col][row] = terrain
+    # -------------------- Placing things onto the grid --------------------
+
+    def place_at(row, col, terrain)
+      @grid[row][col] = terrain
+    rescue IndexError
+      # Can't place it there, don't care
     end
 
-    def to_random_location(terrain)
-      col = Random.rand(@rows)
-      row = Random.rand(@cols)
+    def place_randomly(terrain)
+      row = Random.rand(@rows)
+      col = Random.rand(@cols)
 
-      update(col, row, terrain)
+      place_at(row, col, terrain)
     end
 
-    def at(col, row)
-      @grid[col][row]
+    # Use this to drop large elements onto the matric (for
+    # instance, a body of water, or a forest)
+    def drop_at(row, col, terrain_body)
+      terrain_body.matrix.grid.each_with_index do |terrain_row, tr_idx|
+        terrain_row.each_with_index do |terrain, t_idx|
+          next if terrain.is_a? Terrain::Null
+          place_at((row + tr_idx), (col + t_idx), terrain)
+        end
+      end
+    end
+
+    def drop_randomly(terrain_body)
+      row = Random.rand(@rows)
+      col = Random.rand(@cols)
+
+      drop_at(row, col, terrain_body)
+    end
+
+    # -------------------- Instance Methods --------------------
+
+    def at(row, col)
+      @grid[row][col]
+    rescue IndexError
+      nil
     end
 
     def size
@@ -37,19 +64,13 @@ module Terrain
     end
 
     def to_s
-      grid_str = ""
-
-      @grid.each do |row|
-        row_str = ""
-
-        row.each do |col|
-          row_str += col.symbol.colorize.fore(col.color[:fore]).back(col.color[:back]).to_s
+      @grid.reduce("") do |grid_acc, row|
+        res = row.reduce("") do |row_acc, terrain|
+          row_acc += terrain.to_s
         end
 
-        grid_str += row_str + "\n"
+        grid_acc += res + "\n"
       end
-
-      grid_str
     end
 
   end
