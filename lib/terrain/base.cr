@@ -1,5 +1,5 @@
 module Terrain
-  class Type
+  class Base
 
     def initialize
     end

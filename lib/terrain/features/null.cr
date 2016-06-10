@@ -1,7 +1,7 @@
-require "../type"
+require "../base"
 
 module Terrain
-  class Null < Type
+  class Null < Base
 
     def to_s
       " "

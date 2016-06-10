@@ -1,10 +1,21 @@
-require "../type"
+require "../base"
 
+# The RandomizedBlob creates a large area of any other kind of terrain,
+# with randomized edge shapes (in theory), hence the 'blob'
+#
+# Examples:
+#
+#   Lake: Terrain::RandomizedBlob.new(Terrain::Water.new, 20, 20)
+#   Town: Terrain::RandomizedBlob.new(Terrain::House.new, 15, 30)
+#
+# (The terrain type being passed in has to be instantiated because I don't
+#  yet know how to tell Crystal to accept a class as a parameter)
+#
 module Terrain
-  class Aggregate
+  class RandomizedBlob
     property matrix
 
-    def initialize(terrain_sample : Terrain::Type, rows : Int32, cols : Int32)
+    def initialize(terrain_sample : Terrain::Base, rows : Int32, cols : Int32)
       @terrain_sample = terrain_sample
       @matrix = Terrain::Matrix.new(rows, cols)
 

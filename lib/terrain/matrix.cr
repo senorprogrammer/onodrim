@@ -7,12 +7,12 @@ module Terrain
       @rows = rows
       @cols = cols
 
-      @grid = [] of Array(Terrain::Type)
+      @grid = [] of Array(Terrain::Base)
 
       rows.times do |_|
-        row = [] of Terrain::Type
+        row = [] of Terrain::Base
 
-        (0...cols).each { |col| row << Terrain::Type.new }
+        (0...cols).each { |col| row << Terrain::Base.new }
 
         @grid << row
       end
