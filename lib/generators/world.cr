@@ -17,6 +17,7 @@ module Generators
       end
 
        add_buildings(1)
+       add_mountains(3)
     end
 
     # -------------------- Private Methods --------------------
@@ -63,6 +64,16 @@ module Generators
       count.times do
         house = Terrain::House.new
         @grid.place_randomly(house)
+      end
+    end
+
+    private def add_mountains(count : Int32)
+      count.times do
+        rows = Random.rand(3) + 2
+        cols = Random.rand(5) + 2
+
+        mountain = Terrain::Aggregate.new(Terrain::Rock.new, rows, cols)
+        @grid.drop_randomly(mountain)
       end
     end
   end
