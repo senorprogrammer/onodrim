@@ -8,10 +8,10 @@ module Terrain
     end
 
     def color
-      @color || {
-                  back: :black,
-                  fore: :light_yellow
-                }
+      {
+        back: :black,
+        fore: :light_yellow
+      }
     end
 
   end

@@ -1,22 +1,28 @@
 module Terrain
   class Type
-    property color
+
+    def initialize
+    end
 
     def symbol
       raise "Sub-class must implement #symbol."
-    end
-
-    def color=(hash : Hash(Symbol, Symbol))
-      @color = hash
     end
 
     def color
       raise "Sub-class must implement #color."
     end
 
+    def style
+      [] of Symbol
+    end
+
     # Returns the symbol wrapped in ANSI color codes
     def to_s
-      symbol.colorize.fore(color[:fore]).back(color[:back]).to_s
+      str = symbol.colorize.fore(color[:fore]).back(color[:back])
+
+      style.each { |style_sym| str.mode(style_sym) }
+
+      str.to_s
     end
   end
 end

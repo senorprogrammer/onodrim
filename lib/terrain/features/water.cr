@@ -8,7 +8,7 @@ module Terrain
     end
 
     def color
-      @color || {
+      {
         back: [:black].sample,
         fore: [:blue].sample
       }

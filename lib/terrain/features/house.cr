@@ -4,14 +4,18 @@ module Terrain
   class House < Type
 
     def symbol
-      ["\u2302"].sample
+      ["\u2302", "\u26EA"].sample
     end
 
     def color
-      @color || {
-                  back: [:black].sample,
-                  fore: [:cyan, :light_cyan].sample
-                }
+      {
+        back: [:black].sample,
+        fore: [:red].sample,
+      }
+    end
+
+    def style
+      [:bold, :bright, :underline]
     end
 
   end

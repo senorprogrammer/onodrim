@@ -8,10 +8,10 @@ module Terrain
     end
 
     def color
-      @color || {
-                  back: [:black].sample,
-                  fore: [:dark_gray, :light_gray].sample
-                }
+      {
+        back: [:black].sample,
+        fore: [:dark_gray, :light_gray].sample
+      }
     end
 
   end

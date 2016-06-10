@@ -15,6 +15,8 @@ module Generators
         add_lakes(1)
         add_forests(1)
       end
+
+       add_buildings(1)
     end
 
     # -------------------- Private Methods --------------------
@@ -54,6 +56,13 @@ module Generators
 
         forest = Terrain::Aggregate.new(Terrain::Tree.new, rows, cols)
         @grid.drop_randomly(forest)
+      end
+    end
+
+    private def add_buildings(count : Int32)
+      count.times do
+        house = Terrain::House.new
+        @grid.place_randomly(house)
       end
     end
   end
