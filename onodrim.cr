@@ -16,8 +16,6 @@ OptionParser.parse! do |parser|
   parser.on("-h HEIGHT", "--height=HEIGHT", "Number of rows")   { |val| height = val }
 end
 
-puts ">> #{width} | #{height}"
-
 world = Generators::World.new(Generators::Name.new.random, height.to_i, width.to_i)
 
 puts "Rendering #{world.name}:"

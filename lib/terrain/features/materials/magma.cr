@@ -15,6 +15,10 @@ module Terrain
         fore: [:red].sample
       }
     end
+
+    def style
+      [:dim]
+    end
   end
 end
 
