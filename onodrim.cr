@@ -6,7 +6,7 @@ require "./lib/**"
 require "benchmark"
 require "colorize"
 
-world = Generators::World.new(Generators::Name.new.random, 24, 100)
+world = Generators::World.new(Generators::Name.new.random, 24, 52)
 
 puts "Rendering #{world.name}:"
 puts world.grid.to_s
