@@ -4,7 +4,7 @@ module Terrain
   class Horse < Base
 
     def symbol
-      ["H"].sample
+      ["h"].sample
     end
 
     def color
