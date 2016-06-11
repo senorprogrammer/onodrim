@@ -1,6 +1,6 @@
 # Onodrim
 
-An dumb, experimental terrain generator written in the [Crystal](http://crystal-lang.org) programming language, inspired by the
+A dumb, experimental terrain generator written in the [Crystal](http://crystal-lang.org) programming language, inspired by the
 screenshot at the top of [this article](http://www.seattleweekly.com/arts/enormous-dwarf-2610456/) about [Dwarf Fortress](http://www.bay12games.com/dwarves/).
 
 ## Caveats
@@ -33,8 +33,8 @@ The screenshot below really does not do it justice. That's for the best.
 
 ## Contributing
 
-If you like.
+If you must.
 
 ## License
 
-Ha. Yeah, right.
+No.
