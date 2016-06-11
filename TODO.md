@@ -12,3 +12,5 @@
 
 * Track the objects that are added to the matric (right now they become
   indistinct once added)
+
+* Stop building this
