@@ -5,6 +5,7 @@ module Terrain
   class Water < Base
     include Fluid
 
+
     # -------------------- Display --------------------
 
     def symbol
@@ -19,10 +20,7 @@ module Terrain
     end
 
     def style
-      empty_arr = [] of Symbol
-      return empty_arr unless depth
-
-      (@depth || 1) > 4 ? [:bold] : empty_arr
+      depth >= DEEP_DEPTH ? [:bold] : [] of Symbol
     end
 
   end

@@ -7,13 +7,13 @@ require "benchmark"
 require "colorize"
 require "option_parser"
 
-width  = 48
+width  = 64
 height = 24
 
 OptionParser.parse! do |parser|
   parser.banner = "Usage: onodrim [arguments]"
   parser.on("-w WIDTH", "--width=WIDTH", "Number of columns") { |val| width = val }
-  parser.on("-h HEIGHT", "--height=HEIGHT", "Number of rows")   { |val| height = val }
+  parser.on("-h HEIGHT", "--height=HEIGHT", "Number of rows") { |val| height = val }
 end
 
 world = Generators::World.new(Generators::Name.new.random, height.to_i, width.to_i)

@@ -17,7 +17,7 @@ module Terrain
     end
 
     def style
-      [:dim]
+      depth >= DEEP_DEPTH ? [:dim] : [] of Symbol
     end
   end
 end

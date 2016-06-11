@@ -13,4 +13,6 @@
 * Track the objects that are added to the matric (right now they become
   indistinct once added)
 
+* Don't put the horses in the water or lava. Don't put boats on land
+
 * Stop building this

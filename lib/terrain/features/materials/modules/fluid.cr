@@ -1,5 +1,6 @@
 module Fluid
-  #property depth
+
+  DEEP_DEPTH = 4
 
   @depth : (Int32)?
 

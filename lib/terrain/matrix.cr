@@ -12,7 +12,7 @@ module Terrain
       rows.times do |_|
         row = [] of Terrain::Base
 
-        (0...cols).each { |col| row << Terrain::Base.new }
+        (0...cols).each { |col| row << Terrain::Null.new }
 
         @grid << row
       end
