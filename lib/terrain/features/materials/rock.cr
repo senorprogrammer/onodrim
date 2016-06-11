@@ -4,7 +4,7 @@ module Terrain
   class Rock < Base
 
     def symbol
-      ["\u2738", "\u272A"].sample
+      ["\u2756"].sample
     end
 
     def color

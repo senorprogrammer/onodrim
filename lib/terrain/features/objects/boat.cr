@@ -1,18 +1,18 @@
 require "../../base"
 
 module Terrain
-  class Tree < Base
+  class Boat < Base
 
     def symbol
-      ["\u2912"].sample
+      ["\u256A"].sample
     end
 
     def color
       {
         back: [:black].sample,
-        fore: [:green, :light_green].sample
+        fore: [:blue, :red, :green, :yellow, :magenta, :cyan].sample
       }
     end
-
   end
 end
+

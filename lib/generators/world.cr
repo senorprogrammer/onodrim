@@ -5,52 +5,46 @@ module Generators
 
     def initialize(name : String, rows = 100, cols = 100)
       @name = name
-
-      # Generate the world matrix
       @grid = Terrain::Matrix.new(rows, cols)
 
-      add_base_layer(rows, cols)
+      add_base_layer(Terrain::Sand.new, rows, cols)
 
       Random.rand(50).times do |rnd|
-        add_lakes(1)
-        add_forests(1)
+        drop_some(Terrain::Lake.new, 1)
+        drop_some(Terrain::Forest.new, 1)
       end
 
-      add_mountains(3)
-      add_buildings(1)
+      Random.rand(10).times do |rnd|
+        drop_some(Terrain::Town.new, 1)
+
+        place_some(Terrain::Horse.new, 1)
+        place_some(Terrain::Boat.new, 1)
+      end
+
+      drop_some(Terrain::Mountain.new, 3)
+
+      drop_some(Terrain::Lava.new, 1)    if (Random.rand(2) == 0)
+      drop_some(Terrain::Glacier.new, 1) if (Random.rand(2) == 0)
     end
 
     # -------------------- Private Methods --------------------
 
     # Populate it with the base layer
-    private def add_base_layer(rows, cols)
+    private def add_base_layer(terrain_sample : Terrain::Base, rows, cols)
       rows.times do |row|
-        cols.times { |col| @grid.place_at(row, col, Terrain::Sand.new) }
+        cols.times { |col| @grid.place_at(row, col, terrain_sample.class.new) }
       end
     end
 
-    # Drop some lakes the world
-    private def add_lakes(count : Int32)
+    private def drop_some(terrain_sample : Terrain::Base, count : Int32)
       count.times do
-        @grid.drop_randomly(Terrain::Lake.new)
+        @grid.drop_randomly(terrain_sample.class.new)
       end
     end
 
-    private def add_forests(count : Int32)
+    private def place_some(terrain_sample : Terrain::Base, count : Int32)
       count.times do
-        @grid.drop_randomly(Terrain::Forest.new)
-      end
-    end
-
-    private def add_buildings(count : Int32)
-      count.times do
-        @grid.place_randomly(Terrain::House.new)
-      end
-    end
-
-    private def add_mountains(count : Int32)
-      count.times do
-        @grid.drop_randomly(Terrain::Mountain.new())
+        @grid.place_randomly(terrain_sample.class.new)
       end
     end
   end

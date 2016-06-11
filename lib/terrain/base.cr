@@ -16,6 +16,10 @@ module Terrain
       [] of Symbol
     end
 
+    def name
+      self.class.name.split("::").last
+    end
+
     # Returns the symbol wrapped in ANSI color codes
     def to_s
       str = symbol.colorize.fore(color[:fore]).back(color[:back])

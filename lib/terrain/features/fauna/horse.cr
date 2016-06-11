@@ -1,17 +1,21 @@
 require "../../base"
 
 module Terrain
-  class Tree < Base
+  class Horse < Base
 
     def symbol
-      ["\u2912"].sample
+      ["H"].sample
     end
 
     def color
       {
         back: [:black].sample,
-        fore: [:green, :light_green].sample
+        fore: [:yellow].sample,
       }
+    end
+
+    def style
+      [:bright]
     end
 
   end

@@ -1,10 +1,17 @@
 require "../../base"
+require "./modules/fluid"
 
 module Terrain
   class Water < Base
+    include Fluid
+
+    property depth
+
+
+    # -------------------- Display --------------------
 
     def symbol
-      ["\u2B45", "\u2B46"].sample
+      ["\u2248"].sample
     end
 
     def color
@@ -13,5 +20,10 @@ module Terrain
         fore: [:blue].sample
       }
     end
+
+    def style
+      [:bold]
+    end
+
   end
 end
