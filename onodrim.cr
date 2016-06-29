@@ -17,6 +17,7 @@ OptionParser.parse! do |parser|
 end
 
 world = Generators::World.new(Generators::Name.new.random, height.to_i, width.to_i)
+renderer = Helpers::World::Renderer.new(world)
 
 puts "Rendering #{world.name}:"
-puts world.grid.to_s
+puts renderer.to_s

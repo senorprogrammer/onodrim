@@ -1,18 +1,17 @@
 module Terrain
   class Matrix
     property grid
-    property rows
 
-    def initialize(rows : Int32, cols : Int32)
-      @rows = rows
-      @cols = cols
+    def initialize(height : Int32, width : Int32)
+      @height = height
+      @width = width
 
       @grid = [] of Array(Terrain::Base)
 
-      rows.times do |_|
+      @height.times do |_|
         row = [] of Terrain::Base
 
-        (0...cols).each { |col| row << Terrain::Null.new }
+        (0...width).each { |x| row << Terrain::Null.new }
 
         @grid << row
       end
@@ -20,17 +19,19 @@ module Terrain
 
     # -------------------- Placing things onto the grid --------------------
 
-    def place_at(row, col, terrain)
-      @grid[row][col] = terrain
+    def place_at(y, x, terrain)
+      @grid[y][x] = terrain
     rescue IndexError
       # Can't place it there, don't care
     end
 
-    def place_randomly(terrain)
-      row = Random.rand(@rows)
-      col = Random.rand(@cols)
+    # TODO: Remove everything from here down from this class
 
-      place_at(row, col, terrain)
+    def place_randomly(terrain)
+      x = Random.rand(@width)
+      y = Random.rand(@height)
+
+      place_at(y, x, terrain)
     end
 
     # Use this to drop large elements onto the matric (for
@@ -38,42 +39,32 @@ module Terrain
     #
     # FIXME: Row, Col should be the center of the object, not the top-left
 
-    def drop_at(row, col, terrain_body)
+    def drop_at(y, x, terrain_body)
       terrain_body.matrix.grid.each_with_index do |terrain_row, tr_idx|
         terrain_row.each_with_index do |terrain, t_idx|
           next if terrain.is_a? Terrain::Null
-          place_at((row + tr_idx), (col + t_idx), terrain)
+          place_at((y + tr_idx), (x + t_idx), terrain)
         end
       end
     end
 
     def drop_randomly(terrain_body)
-      row = Random.rand(@rows)
-      col = Random.rand(@cols)
+      x = Random.rand(@width)
+      y = Random.rand(@height)
 
-      drop_at(row, col, terrain_body)
+      drop_at(y, x, terrain_body)
     end
 
     # -------------------- Instance Methods --------------------
 
-    def at(row, col)
-      @grid[row][col]
+    def at(y, x)
+      @grid[y][x]
     rescue IndexError
       nil
     end
 
     def size
-      @grid.size * @grid[0].size
-    end
-
-    def to_s
-      @grid.reduce("") do |grid_acc, row|
-        res = row.reduce("") do |row_acc, terrain|
-          row_acc += terrain.to_s
-        end
-
-        grid_acc += res + "\n"
-      end
+      @width * @height
     end
 
   end
