@@ -1,6 +1,6 @@
 require "../../../../matrix"
 
-module BlobbyStuff
+module BlobbyThings
   property matrix
 
   @height : Int32
@@ -12,13 +12,13 @@ module BlobbyStuff
     @height = height
     @width  = width
 
-    @matrix = ::Matrix.new(height, width)
+    @matrix = ::Matrix.new(0, 0)
   end
 
   # -------------------- Private Methods --------------------
 
   private def populate(terrain : Terrain::Base)
     blob = Terrain::RandomizedBlob.new(terrain, @height, @width)
-    @matrix = blob.matrix
+    @matrix = blob.matrix.dup
   end
 end

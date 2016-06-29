@@ -1,4 +1,5 @@
 require "../../base"
+require "../../../matrix"
 
 # The RandomizedBlob creates a large area of any other kind of terrain,
 # with randomized edge shapes (in theory), hence the 'blob'
@@ -17,6 +18,8 @@ require "../../base"
 module Terrain
   class RandomizedBlob
     property matrix
+
+    @matrix : ::Matrix
 
     def initialize(terrain_sample : Terrain::Base, height : Int32, width : Int32)
       @terrain_sample = terrain_sample

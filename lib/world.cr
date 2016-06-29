@@ -24,6 +24,6 @@ class World
     x = Random.rand(@matrix.width)
     y = Random.rand(@matrix.height)
 
-    ::Location.new(x, y)
+    ::Location.new(x, y, 0)
   end
 end
