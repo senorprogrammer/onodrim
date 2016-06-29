@@ -1,13 +1,11 @@
 module Generators
   class World
-    property matrix
-    property name
+    property world
 
-    def initialize(name : String, rows = 100, cols = 100)
-      @name = name
-      @matrix = Terrain::Matrix.new(rows, cols)
+    def initialize(name : String, height = 100, width = 100)
+      @world = ::World.new(name, ::Matrix.new(height, width))
 
-      add_base_layer(Terrain::Sand.new, rows, cols)
+      add_base_layer(Terrain::Sand.new, height, width)
 
       Random.rand(50).times do |rnd|
         drop_some(Terrain::Lake.new, 1)
@@ -32,19 +30,19 @@ module Generators
     # Populate it with the base layer
     private def add_base_layer(terrain_sample : Terrain::Base, rows, cols)
       rows.times do |row|
-        cols.times { |col| @matrix.place_at(row, col, terrain_sample.class.new) }
+        cols.times { |col| @world.matrix.place_at(row, col, terrain_sample.class.new) }
       end
     end
 
     private def drop_some(terrain_sample : Terrain::Base, count : Int32)
       count.times do
-        @matrix.drop_randomly(terrain_sample.class.new)
+        @world.matrix.drop_randomly(terrain_sample.class.new)
       end
     end
 
     private def place_some(terrain_sample : Terrain::Base, count : Int32)
       count.times do
-        @matrix.place_randomly(terrain_sample.class.new)
+        @world.matrix.place_randomly(terrain_sample.class.new)
       end
     end
   end

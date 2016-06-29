@@ -1,4 +1,4 @@
-require "../../../matrix"
+require "../../../../matrix"
 
 module BlobbyStuff
   property matrix
@@ -6,13 +6,13 @@ module BlobbyStuff
   @rows : Int32
   @cols : Int32
 
-  @matrix : Terrain::Matrix
+  @matrix : ::Matrix
 
   def initialize(rows : Int32, cols : Int32)
     @rows = rows
     @cols = cols
 
-    @matrix = Terrain::Matrix.new(rows, cols)
+    @matrix = ::Matrix.new(rows, cols)
   end
 
   # -------------------- Private Methods --------------------

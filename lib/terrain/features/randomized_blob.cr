@@ -20,7 +20,7 @@ module Terrain
 
     def initialize(terrain_sample : Terrain::Base, rows : Int32, cols : Int32)
       @terrain_sample = terrain_sample
-      @matrix = Terrain::Matrix.new(rows, cols)
+      @matrix = ::Matrix.new(rows, cols)
 
       populate(@matrix, @terrain_sample)
     end

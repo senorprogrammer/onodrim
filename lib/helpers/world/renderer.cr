@@ -3,7 +3,7 @@ module Helpers
     class Renderer
       property world
 
-      def initialize(world : Generators::World)
+      def initialize(world : ::World)
         @world = world
       end
 
