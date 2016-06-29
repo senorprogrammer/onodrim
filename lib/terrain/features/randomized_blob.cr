@@ -39,21 +39,21 @@ module Terrain
       # Fill the entire area with the terrain
       @matrix.grid.each_with_index do |row, r_idx|
         row.each_with_index do |col, c_idx|
-          @matrix.place_at(r_idx, c_idx, @terrain_sample.class.new)
+          @matrix.add_terrain(r_idx, c_idx, @terrain_sample.class.new)
         end
       end
 
       # Start from the left, knock out pieces with Null
       @matrix.grid.each_with_index do |row, r_idx|
         1.upto(row.size) do |n|
-          (Random.rand(2) == 0) ? @matrix.place_at(r_idx, (n - 1), Terrain::Null.new) : break
+          (Random.rand(2) == 0) ? @matrix.add_terrain(r_idx, (n - 1), Terrain::Null.new) : break
         end
       end
 
       # Go from the right, knock out pieces with null
       @matrix.grid.each_with_index do |row, r_idx|
         row.size.downto(1) do |n|
-          (Random.rand(2) == 0) ? @matrix.place_at(r_idx, (n - 1), Terrain::Null.new) : break
+          (Random.rand(2) == 0) ? @matrix.add_terrain(r_idx, (n - 1), Terrain::Null.new) : break
         end
       end
     end

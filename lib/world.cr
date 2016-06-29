@@ -15,7 +15,7 @@ class World
     terrain_obj.matrix.grid.each_with_index do |terrain_row, tr_idx|
       terrain_row.each_with_index do |terrain, t_idx|
         next if terrain.is_a? Terrain::Null
-        add_terrain((y + tr_idx), (x + t_idx), terrain)
+        add_terrain((x + t_idx), (y + tr_idx), terrain)
       end
     end
   end
@@ -24,6 +24,6 @@ class World
     x = Random.rand(@matrix.width)
     y = Random.rand(@matrix.height)
 
-    [x, y]
+    ::Location.new(x, y)
   end
 end
