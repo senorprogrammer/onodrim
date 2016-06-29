@@ -12,38 +12,39 @@ module Generators
         drop_some(Terrain::Forest.new, 1)
       end
 
-      Random.rand(10).times do |rnd|
-        drop_some(Terrain::Town.new, 1)
+      #Random.rand(10).times do |rnd|
+        #drop_some(Terrain::Town.new, 1)
 
-        place_some(Terrain::Horse.new, 1)
-        place_some(Terrain::Boat.new, 1)
-      end
+        #place_some(Terrain::Horse.new, 1)
+        #place_some(Terrain::Boat.new, 1)
+      #end
 
-      drop_some(Terrain::Mountain.new, 3)
+      #drop_some(Terrain::Mountain.new, 3)
 
-      drop_some(Terrain::Lava.new, 1)    if (Random.rand(2) == 0)
-      drop_some(Terrain::Glacier.new, 1) if (Random.rand(2) == 0)
+      #drop_some(Terrain::Lava.new, 1)    if (Random.rand(2) == 0)
+      #drop_some(Terrain::Glacier.new, 1) if (Random.rand(2) == 0)
     end
 
     # -------------------- Private Methods --------------------
 
     # Populate it with the base layer
     private def add_base_layer(terrain_sample : Terrain::Base, rows, cols)
-      rows.times do |row|
-        cols.times { |col| @world.matrix.place_at(row, col, terrain_sample.class.new) }
+      rows.times do |y|
+        cols.times { |x| @world.add_terrain(x, y, terrain_sample.class.new) }
       end
     end
 
     private def drop_some(terrain_sample : Terrain::Base, count : Int32)
       count.times do
-        @world.matrix.drop_randomly(terrain_sample.class.new)
+        rand_loc = @world.random_location
+        @world.add_object(rand_loc[0], rand_loc[1], terrain_sample.class.new)
       end
     end
 
-    private def place_some(terrain_sample : Terrain::Base, count : Int32)
-      count.times do
-        @world.matrix.place_randomly(terrain_sample.class.new)
-      end
-    end
+    #private def place_some(terrain_sample : Terrain::Base, count : Int32)
+      #count.times do
+        #@world.place_randomly(terrain_sample.class.new)
+      #end
+    #end
   end
 end

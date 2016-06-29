@@ -5,11 +5,11 @@ module Terrain
     end
 
     def symbol
-      raise "Sub-class must implement #symbol."
+      raise "Sub-class '#{self.class.name}' must implement #symbol."
     end
 
     def color
-      raise "Sub-class must implement #color."
+      raise "Sub-class '#{self.class.name}' must implement #color."
     end
 
     def style

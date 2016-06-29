@@ -12,6 +12,7 @@ module Helpers
 
         @world.matrix.grid.reduce("") do |grid_acc, row|
           res = row.reduce("") do |row_acc, terrain|
+            puts terrain.inspect
             row_acc += terrain.to_s
           end
 

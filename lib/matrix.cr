@@ -1,5 +1,5 @@
 class Matrix
-  property grid
+  property grid, width, height
 
   def initialize(height : Int32, width : Int32)
     @height = height
@@ -18,7 +18,7 @@ class Matrix
 
   # -------------------- Placing things onto the grid --------------------
 
-  def place_at(y, x, terrain)
+  def add_terrain(x, y, terrain)
     @grid[y][x] = terrain
   rescue IndexError
     # Can't place it there, don't care
@@ -26,33 +26,33 @@ class Matrix
 
   # TODO: Remove everything from here down from this class
 
-  def place_randomly(terrain)
-    x = Random.rand(@width)
-    y = Random.rand(@height)
+  #def place_randomly(terrain)
+    #x = Random.rand(@width)
+    #y = Random.rand(@height)
 
-    place_at(y, x, terrain)
-  end
+    #place_at(y, x, terrain)
+  #end
 
   # Use this to drop large elements onto the matric (for
   # instance, a body of water, or a forest)
   #
   # FIXME: Row, Col should be the center of the object, not the top-left
 
-  def drop_at(y, x, terrain_body)
-    terrain_body.matrix.grid.each_with_index do |terrain_row, tr_idx|
-      terrain_row.each_with_index do |terrain, t_idx|
-        next if terrain.is_a? Terrain::Null
-        place_at((y + tr_idx), (x + t_idx), terrain)
-      end
-    end
-  end
+  #def drop_at(y, x, terrain_body)
+    #terrain_body.matrix.grid.each_with_index do |terrain_row, tr_idx|
+      #terrain_row.each_with_index do |terrain, t_idx|
+        #next if terrain.is_a? Terrain::Null
+        #place_at((y + tr_idx), (x + t_idx), terrain)
+      #end
+    #end
+  #end
 
-  def drop_randomly(terrain_body)
-    x = Random.rand(@width)
-    y = Random.rand(@height)
+  #def drop_randomly(terrain_body)
+    #x = Random.rand(@width)
+    #y = Random.rand(@height)
 
-    drop_at(y, x, terrain_body)
-  end
+    #drop_at(y, x, terrain_body)
+  #end
 
   # -------------------- Instance Methods --------------------
 
