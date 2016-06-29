@@ -3,22 +3,22 @@ require "../../../../matrix"
 module BlobbyStuff
   property matrix
 
-  @rows : Int32
-  @cols : Int32
+  @height : Int32
+  @width : Int32
 
   @matrix : ::Matrix
 
-  def initialize(rows : Int32, cols : Int32)
-    @rows = rows
-    @cols = cols
+  def initialize(height : Int32, width : Int32)
+    @height = height
+    @width  = width
 
-    @matrix = ::Matrix.new(rows, cols)
+    @matrix = ::Matrix.new(height, width)
   end
 
   # -------------------- Private Methods --------------------
 
   private def populate(terrain : Terrain::Base)
-    blob = Terrain::RandomizedBlob.new(terrain, @rows, @cols)
+    blob = Terrain::RandomizedBlob.new(terrain, @height, @width)
     @matrix = blob.matrix
   end
 end

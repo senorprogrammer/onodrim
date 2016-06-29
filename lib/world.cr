@@ -3,7 +3,7 @@ class World
   property matrix
 
   def initialize(name : String, matrix : ::Matrix)
-    @name = name
+    @name   = name
     @matrix = matrix
   end
 

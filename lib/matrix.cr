@@ -20,13 +20,15 @@ class Matrix
 
   def add_terrain(x, y, terrain)
     @grid[y][x] = terrain
+    true
   rescue IndexError
     # Can't place it there, don't care
+    false
   end
 
   # -------------------- Instance Methods --------------------
 
-  def at(y, x)
+  def at(x, y)
     @grid[y][x]
   rescue IndexError
     nil

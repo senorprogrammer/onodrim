@@ -1,4 +1,4 @@
-require "../base"
+require "../../base"
 
 module Terrain
   class Null < Base
