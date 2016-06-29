@@ -6,7 +6,7 @@
 </pre>
                                
 
-A dumb, experimental terrain generator written in the [Crystal](http://crystal-lang.org) programming language, inspired by the
+A dumb, experimental terrain generator written in [Crystal](http://crystal-lang.org), inspired by the
 screenshot at the top of [this article](http://www.seattleweekly.com/arts/enormous-dwarf-2610456/) about [Dwarf Fortress](http://www.bay12games.com/dwarves/).
 
 ## Caveats
