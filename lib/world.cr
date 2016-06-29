@@ -23,7 +23,8 @@ class World
   def random_location
     x = Random.rand(@matrix.width)
     y = Random.rand(@matrix.height)
+    z = Random.rand(@matrix.depth)
 
-    ::Location.new(x, y, 0)
+    ::Location.new(x, y, z)
   end
 end

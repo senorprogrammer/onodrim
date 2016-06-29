@@ -5,8 +5,8 @@ module Terrain
   class Glacier < Base
     include BlobbyThings
 
-    def initialize(rows = Random.rand(15), cols = Random.rand(30))
-      super(rows, cols)
+    def initialize(width = Random.rand(30), height = Random.rand(15), depth = Random.rand(30))
+      super(width, height, depth)
       populate(Terrain::Snow.new)
     end
 

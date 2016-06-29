@@ -21,9 +21,9 @@ module Terrain
 
     @matrix : ::Matrix
 
-    def initialize(terrain_sample : Terrain::Base, height : Int32, width : Int32)
+    def initialize(terrain_sample : Terrain::Base, width : Int32, height : Int32, depth : Int32)
       @terrain_sample = terrain_sample
-      @matrix = ::Matrix.new(height, width)
+      @matrix = ::Matrix.new(width, height, depth)
 
       populate(@matrix, @terrain_sample)
     end

@@ -5,8 +5,8 @@ module Terrain
   class Town < Base
     include BlobbyThings
 
-    def initialize(rows = Random.rand(6), cols = Random.rand(8))
-      super(rows, cols)
+    def initialize(width = Random.rand(8), height = Random.rand(6), depth = Random.rand(3))
+      super(width, height, depth)
       populate(Terrain::House.new)
     end
 

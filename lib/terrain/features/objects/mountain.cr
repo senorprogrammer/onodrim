@@ -5,8 +5,8 @@ module Terrain
   class Mountain < Base
     include BlobbyThings
 
-    def initialize(rows = (Random.rand(6) + 2), cols = (Random.rand(12) + 2))
-      super(rows, cols)
+    def initialize(width = (Random.rand(12) + 2), height = Random.rand(6) + 2, depth = Random.rand(30))
+      super(width, height, depth)
       populate(Terrain::Rock.new)
     end
 

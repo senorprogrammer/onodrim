@@ -1,9 +1,10 @@
 class Matrix
-  property grid, width, height
+  property grid, width, height, depth
 
-  def initialize(height : Int32, width : Int32)
+  def initialize(width : Int32 = 100, height : Int32 = 100, depth : Int32 = 100)
+    @width  = width
     @height = height
-    @width = width
+    @depth  = depth
 
     @grid = [] of Array(Terrain::Base)
 
@@ -35,7 +36,7 @@ class Matrix
   end
 
   def size
-    @width * @height
+    @width * @height * @depth
   end
 
 end

@@ -2,8 +2,8 @@ module Generators
   class World
     property world
 
-    def initialize(name : String, height = 100, width = 100)
-      @world = ::World.new(name, ::Matrix.new(height, width))
+    def initialize(name : String, width : Int32 , height : Int32, depth : Int32)
+      @world = ::World.new(name, ::Matrix.new(width, height, depth))
 
       add_base_layer(Terrain::Sand.new, height, width)
 
