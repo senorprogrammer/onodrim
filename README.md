@@ -11,11 +11,11 @@ screenshot at the top of [this article](http://www.seattleweekly.com/arts/enormo
 
 ## Caveats
 
-1. I know nothing about Crystal.
+1. I've used this to learn Crystal.
 2. I know nothing about terrain generation.
 3. I know nothing about Dwarf Fortress.
 
-You should not use this to learn about Crystal. Or terrain generation. Or Dwarf Fortress.
+You should probably not use this to learn about Crystal. Or terrain generation. Or Dwarf Fortress.
 
 ## Installation
 
